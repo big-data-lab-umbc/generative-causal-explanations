@@ -25,7 +25,7 @@ class Encoder(nn.Module):
     
     def encode(self, x):
         z = self.model(x)
-        z = z.view(z.shape[0], -1)
+        z = z.reshape(z.shape[0], -1)
         return self.fc_mu(z), self.fc_logvar(z)
     
     def reparameterize(self, mu, logvar):
